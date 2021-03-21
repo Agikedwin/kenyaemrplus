@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="hibernate" url="file://$PROJECT_DIR$/openmrs-module-kenyacore/api/src/test/resources/test-hibernate.cfg.xml" />
+    <file type="hibernate" url="file://$PROJECT_DIR$/openmrs-module-kenyaemr/api/src/test/resources/test-hibernate.cfg.xml" />
+    <file type="hibernate" url="file://$PROJECT_DIR$/patientdashboardapp/api/src/test/resources/test-hibernate.cfg.xml" />
+    <type id="Spring" />
+  </component>
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/ehrinventory/pom.xml" />
+      </list>
+    </option>
+  </component>
+</project>

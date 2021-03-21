@@ -1,0 +1,84 @@
+<!--
+  ~ The contents of this file are subject to the OpenMRS Public License
+  ~ Version 1.0 (the "License"); you may not use this file except in
+  ~ compliance with the License. You may obtain a copy of the License at
+  ~ http://license.openmrs.org
+  ~
+  ~ Software distributed under the License is distributed on an "AS IS"
+  ~ basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing rights and limitations
+  ~ under the License.
+  ~
+  ~ Copyright (C) OpenMRS, LLC.  All Rights Reserved.
+  -->
+<htmlform>
+	
+	<script type="text/javascript">
+		jQuery(function($){
+
+		});
+	</script>
+
+	<div class="ke-form-header">
+		<table width="100%">
+		  <tr>
+				<ifMode mode="ENTER">
+					<script type="text/javascript">
+						jq(function(){
+							setValue("encounter-date.value", "");
+						});
+					</script>
+				</ifMode>
+				<td>Date Started on IPT: <encounterDate id="encounter-date" showTime="true" /></td>
+				<td>Location: <encounterLocation default="GlobalProperty:kenyaemr.defaultLocation" type="autocomplete" /></td>
+		  </tr>
+		</table>
+	</div>
+
+	<div class="ke-form-content">
+		<fieldset>
+			<legend>Indication for IPT</legend>
+
+			<table>
+				<tr>
+					<td>Indication for IPT</td>
+					<td>
+						<obs conceptId="162276AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerConceptIds="138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,162277AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,162278AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1555AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+							  style="dropdown" answerLabels="HIV Positive,In Prison,Child exposed to Tuberculosis,Health Care Worker"/>
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+	</div>
+
+	<div class="ke-form-content">
+		<fieldset>
+			<legend>Sub-County registration</legend>
+
+			<table>
+				<tr>
+					<td>Registration Number:</td>
+					<td><patient field="identifier" identifierTypeId="d8ee3b8c-a8fc-4d6b-af6a-9423be5f8906" required="false"/></td>
+
+					<td>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Registration Date:&#160;&#160;&#160;
+						<obs class="reg-date" conceptId="161552AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" showTime="false" required="false" allowFutureDates="false"
+						/>
+					</td>
+
+
+
+				</tr>
+				<tr>
+					<td colspan="2"><div id="startOfTreatmentDateError" class="error"></div></td>
+				</tr>
+			</table>
+		</fieldset>
+	</div>
+
+	<enrollInProgram programId="335517a1-04bc-438b-9843-1ba49fb7fcd9" />
+
+	<div class="ke-form-footer">
+		<submit />
+	</div>
+
+</htmlform>

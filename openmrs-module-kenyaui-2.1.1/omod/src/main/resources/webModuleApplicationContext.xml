@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+  		    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean class="org.openmrs.ui.framework.StandardModuleUiConfiguration">
+		<property name="moduleId" value="kenyaui"/>
+		<property name="resourceShortcuts">
+			<map>
+				<!-- JS -->
+				<entry key="scripts/underscore.js" value="scripts/underscore-1.5.2.min.js" />
+				<entry key="scripts/jquery.js" value="scripts/jquery-1.10.2.min.js" />
+				<entry key="scripts/highcharts.js" value="scripts/highcharts-3.0.7.min.js" />
+				<entry key="scripts/jquery-ui.js" value="scripts/jquery-ui-1.10.3.min.js" />
+				<entry key="scripts/angular.js" value="scripts/angular-1.2.1.min.js" />
+				<entry key="scripts/select2.js" value="scripts/select2-3.4.5.min.js" />
+
+				<!-- CSS -->
+				<entry key="styles/jquery-ui.css" value="styles/jquery-ui-1.10.3.custom.css" />
+				<entry key="styles/select2.css" value="styles/select2-3.4.5.css" />
+			</map>
+		</property>
+	</bean>
+		
+</beans>

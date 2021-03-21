@@ -1,0 +1,75 @@
+<!--
+  ~ The contents of this file are subject to the OpenMRS Public License
+  ~ Version 1.0 (the "License"); you may not use this file except in
+  ~ compliance with the License. You may obtain a copy of the License at
+  ~ http://license.openmrs.org
+  ~
+  ~ Software distributed under the License is distributed on an "AS IS"
+  ~ basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+  ~ License for the specific language governing rights and limitations
+  ~ under the License.
+  ~
+  ~ Copyright (C) OpenMRS, LLC.  All Rights Reserved.
+  -->
+<htmlform>
+	<script type="text/javascript">
+
+		var iptDiscontinuation_VELOCITY = "<lookup expression="kenyaemr.IptDiscontinuationVelocityCalculation()" />";
+		var enrollmentDate = iptDiscontinuation_VELOCITY.split(",")[0].split(":")[1];
+
+		jq(document).ready(function(){
+
+			var pbirthdate = new Date("<lookup expression="patient.birthdate" />").getTime();
+			var discontinueDate;
+
+			beforeSubmit.push(function() {
+				discontinueDate = new Date(getValue('encounter-date.value')).getTime();
+
+				if(discontinueDate &lt; pbirthdate){
+					getField('encounter-date.error').html('Discontinue date, should not be earlier than Birth date').show();
+					return false;
+				}
+				if(discontinueDate &lt; enrollmentDate){
+					getField('encounter-date.error').html('Discontinue date, should not be earlier than Enrollment date').show();
+					return false;
+				}else {
+					getField('encounter-date.error').html('Discontinue date, should not be earlier than Enrollment').hide();
+
+				}
+
+				return true;
+			});
+		});
+	</script>
+
+
+
+	<div class="ke-form-header">
+		<table width="100%">
+			<tr>
+				<td>Date: <encounterDate id="encounter-date" showTime="true" /></td>
+				<td>Location: <encounterLocation default="GlobalProperty:kenyaemr.defaultLocation" type="autocomplete" /></td>
+			</tr>
+		</table>
+	</div>
+	<div class="ke-form-content">
+		<fieldset>
+			<legend>Discontinue IPT</legend>
+
+			<table>
+				<tr>
+					<td>Reason for discontinuation:</td>
+					<td><obs conceptId="161555AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" dateLabel="Date:" answerConceptIds="1267AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5240AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,159836AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160034AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA, 159492AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA, 112141AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA, 102AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabels="Completed, Lost to followup, Discontinued, Died, Transferred Out, TB infected, Drug toxicity" style="dropdown" labelText=""  showDate="true"/></td>
+				</tr>
+			</table>
+		</fieldset>
+
+	</div>	
+
+	<completeProgram programId="335517a1-04bc-438b-9843-1ba49fb7fcd9" />
+
+	<div class="ke-form-footer">
+		<submit />
+	</div>
+
+</htmlform>

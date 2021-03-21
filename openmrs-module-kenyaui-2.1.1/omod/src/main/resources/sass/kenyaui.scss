@@ -1,0 +1,691 @@
+/**
+ * The contents of this file are subject to the OpenMRS Public License
+ * Version 1.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at
+ * http://license.openmrs.org
+ *
+ * Software distributed under the License is distributed on an "AS IS"
+ * basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+ * License for the specific language governing rights and limitations
+ * under the License.
+ *
+ * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
+ */
+
+/***** Color constants *****/
+
+$color_text_general: #333333;
+$color_text_control: #444444;
+$color_text_link: #495998;
+$color_bkgd_general: #ffffff;
+$color_bkgd_control: #ebebeb;
+$color_bkgd_frame: #d1d0c9;
+$color_bkgd_gutter: #7f7b72;
+$color_bkgd_label: lighten($color_bkgd_frame, 15%);
+$color_bkgd_toolbar: #464640;
+$color_bkgd_highlight: #ffffdd;
+$color_bkgd_error: #ffd1d7;
+$color_bkgd_warning: #ffda95;
+
+/***** Size constants *****/
+
+$size_text_general: 14px;
+$size_text_header: 16px;
+$size_text_extra: 12px;
+
+/***** Font styles *****/
+
+* {
+	font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+html, body, p, input, button, select, legend, label {
+	font-size: $size_text_general;
+	color: $color_text_general;
+}
+
+a {
+	color: $color_text_link;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.ke-extra, small {
+	font-size: $size_text_extra;
+}
+
+/************************** Re-usables **************************/
+
+/* Anything which can be clicked */
+.ke-clickable {
+	cursor: pointer;
+}
+
+/* Content which can be clicked to navigate elsewhere */
+.ke-navigable {
+	@extend .ke-clickable;
+}
+.ke-navigable:hover {
+	background-color: $color_bkgd_highlight;
+}
+
+.ke-clearfix {
+	overflow: hidden;
+}
+
+/* Anything which is an input control */
+.ke-control {
+	@extend .ke-clearfix;
+
+	color: $color_text_control;
+	background-color: $color_bkgd_control;
+	display: inline-block;
+	position: relative;
+	font-weight: bold;
+	margin: 0;
+	text-decoration: none;
+}
+
+/* A control which is pressable */
+.ke-pressable {
+	@extend .ke-clickable;
+	@extend .ke-control;
+
+	border-top: 0px;
+	border-bottom: 1px darken($color_bkgd_control, 20%) solid;
+	border-left: 0px;
+	border-right: 1px darken($color_bkgd_control, 20%) solid;
+}
+
+.ke-pressable:hover {
+	background-color: darken($color_bkgd_control, 8%);
+}
+
+/* Rounded corners */
+.ke-rounded {
+	border-radius: 3px;
+}
+
+/* Any inline text tag */
+.ke-tag {
+	@extend .ke-rounded;
+
+	display: inline-block;
+	padding: 2px 4px 2px 4px;
+}
+
+/************************** Page layout **************************/
+
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+.ke-page-container {
+	position: relative;
+}
+
+.ke-page-sidebar {
+	width: 320px;
+	position: absolute;
+	padding: 5px;
+}
+
+.ke-page-content {
+	padding: 5px;
+	background-color: white;
+}
+
+.ke-page-sidebar + .ke-page-content {
+	margin-left: 330px;
+}
+
+/************************** Toolbar menu **************************/
+
+.ke-toolbar {
+	@extend .ke-clearfix;
+
+	font-size: $size_text_general;
+	color: white;
+	background-color: $color_bkgd_toolbar;
+}
+
+.ke-toolbar-item {
+	display: inline-block;
+
+	span, a {
+		display: inline-block;
+		padding: 5px 10px 5px 10px;
+	}
+	a {
+		font-weight: bold;
+		color: white;
+		text-decoration: none;
+
+		&:hover {
+			background-color: lighten($color_bkgd_toolbar, 12%);
+		}
+	}
+}
+
+.ke-apptoolbar {
+	float: left;
+
+	.ke-toolbar-item {
+		border-right: 1px solid white;
+
+		&:last-child {
+			border-right: 0;
+		}
+	}
+}
+
+.ke-usertoolbar {
+	float: right;
+
+	.ke-toolbar-item {
+		border-left: 1px solid white;
+
+		&:first-child {
+			border-left: 0;
+		}
+	}
+}
+
+/************************** Panelbar **************************/
+
+.ke-panelbar {
+	@extend .ke-rounded;
+
+	background-color: $color_bkgd_frame;
+	padding: 3px;
+	margin-bottom: 5px;
+}
+
+/************************** Tabs **************************/
+
+.ke-tabmenu {
+	@extend .ke-clearfix;
+
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	padding: 3px 5px 0 5px;
+	background-color: $color_bkgd_gutter;
+
+	.ke-tabmenu-item {
+		@extend .ke-clickable;
+
+		background-color: $color_bkgd_frame;
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+		border-right: 1px #555 solid;
+		display: block;
+		float: left;
+		padding: 6px 10px 5px 10px;
+		margin-right: 5px;
+		min-width: 75px;
+		color: #413c32;
+		text-align: center;
+		font-weight: bold;
+		font-size: $size_text_header;
+
+		&:hover {
+			background-color: lighten($color_bkgd_frame, 7%);
+		}
+	}
+
+	.ke-tabmenu-item-active {
+		background-color: $color_bkgd_general;
+
+		&:hover {
+			background-color: $color_bkgd_general;
+		}
+	}
+}
+
+.ke-tab {
+	padding-top: 5px;
+	display: none;
+}
+
+/************************** Panels **************************/
+
+.ke-panel-frame {
+	@extend .ke-rounded;
+
+	background-color: $color_bkgd_frame;
+	margin-bottom: 5px;
+	padding: 3px;
+
+	.ke-panel-heading {
+		color: #413c32;
+		padding: 5px;
+		text-align: center;
+		font-weight: bold;
+		font-size: $size_text_header;
+	}
+	.ke-panel-content {
+		@extend .ke-clearfix;
+
+		background-color: $color_bkgd_general;
+		padding: 5px;
+	}
+	.ke-panel-controls, .ke-panel-footer /* Deprecated: use .ke-panel-controls*/ {
+		background-color: $color_bkgd_label;
+		padding: 5px;
+		text-align: center;
+	}
+}
+
+.ke-page-sidebar {
+	.ke-panel-frame {
+		background-color: $color_bkgd_gutter;
+	}
+	.ke-panel-heading {
+		color: white;
+	}
+}
+
+/************************** Forms **************************/
+
+fieldset {
+	border: 2px solid $color_bkgd_frame;
+	margin: 3px 0 3px 0;
+}
+
+legend {
+	color: $color_text_general;
+	font-weight: bold;
+}
+
+.ke-form-header {
+	@extend .ke-panel-controls;
+}
+
+.ke-form-content {
+	@extend .ke-panel-content;
+
+	table th {
+		background-color: #EEE;
+		font-weight: bold;
+		padding: 3px;
+		color: #444;
+	}
+}
+
+.ke-form-footer {
+	@extend .ke-panel-controls;
+
+	button, input {
+		margin: 0 2px 0 2px;
+	}
+}
+
+.ke-field-label {
+	padding: 2px;
+	background-color: $color_bkgd_label;
+	color: $color_text_general;
+	font-size: $size_text_extra;
+}
+
+span.ke-field-label, label.ke-field-label {
+	display: block;
+}
+
+.ke-field-content {
+	display: block;
+	margin-bottom: 12px;
+}
+
+.ke-field-instructions {
+	font-style: italic;
+	font-size: $size_text_extra;
+}
+
+.error {
+	@extend .ke-tag;
+
+	background-color: $color_bkgd_error;
+}
+
+.ke-form-globalerrors {
+	@extend .ke-rounded;
+
+	background-color: $color_bkgd_error;
+	padding: 3px;
+
+	div:before {
+		content: '\0000a0\002192\0000a0';
+	}
+}
+
+.ke-form-instructions {
+	text-align: right;
+	color: #444;
+	font-size: $size_text_extra;
+}
+
+/************************** Buttons **************************/
+
+button, input[type=button], input[type=submit], input[type=reset] {
+	@extend .ke-pressable;
+	@extend .ke-rounded;
+	@extend .ke-clearfix;
+
+	padding: 5px;
+	min-width: 75px;
+
+	&:disabled {
+		color: lighten($color_text_general, 33%);
+	}
+
+	img {
+		vertical-align: middle;
+	}
+}
+
+button.ke-compact {
+	padding: 3px;
+	min-width: 0;
+}
+
+button.ke-app {
+	padding: 8px;
+	width: 128px;
+	height: 128px;
+
+	img {
+		margin: 0 auto 5px auto;
+		display: block;
+	}
+}
+
+/************************** Side menu **************************/
+
+.ke-menu-item {
+	@extend .ke-clickable;
+	@extend .ke-control;
+
+	display: block;
+	border-top: 1px solid #FFF;
+	border-bottom: 1px solid #CCC;
+	padding: 5px;
+	min-height: 32px;
+
+	&:hover {
+		background-color: darken($color_bkgd_control, 8%);
+	}
+	&:first-of-type {
+		border-top: none;
+	}
+	&:last-of-type {
+		border-bottom: none;
+	}
+
+	.ke-icon {
+		float: left;
+		margin-right: 10px;
+	}
+	.ke-label {
+		color: $color_text_control;
+		font-weight: bold;
+		text-decoration: none;
+		display: inline-block;
+	}
+	.ke-extra {
+		font-size: 11px;
+		font-weight: normal;
+	}
+}
+
+.ke-menu-item-active, .ke-menu-item-active:hover {
+	background-color: #EEB;
+}
+
+/************************** Stacks **************************/
+
+.ke-stack-item {
+	@extend .ke-clearfix;
+
+	border-top: 2px dotted $color_bkgd_frame;
+	padding: 3px;
+
+	&:first-of-type {
+		border-top: 0;
+	}
+
+	.ke-icon {
+		float: left;
+		padding-right: 5px;
+	}
+	button {
+		float: right;
+		margin: 3px;
+	}
+	.ke-extra {
+		color: gray;
+	}
+}
+
+/************************** Tables **************************/
+
+.ke-table-vertical {
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+
+	thead tr {
+		border-bottom: 2px solid $color_bkgd_gutter;
+
+		th {
+			font-weight: bold;
+			color: $color_text_control;
+			padding: 2px;
+			text-align: left;
+		}
+	}
+	tbody tr {
+		border-top: 1px solid #AAA;
+
+		&:first-of-type {
+			border-top: 0;
+		}
+		&:nth-child(odd) {
+			background-color: #F7F7F7;
+		}
+		td {
+			padding: 2px;
+			text-align: left;
+			vertical-align: top;
+		}
+	}
+}
+
+/************************** Data points **************************/
+
+.ke-datapoint {
+	margin: 1px 0 1px 0;
+
+	.ke-value {
+		font-weight: bold;
+	}
+	.ke-extra {
+		font-size: $size_text_extra;
+	}
+}
+
+/************************** Tags **************************/
+
+.ke-flagtag {
+	@extend .ke-tag;
+
+	background-color: yellow;
+	color: #443;
+}
+
+.ke-visittag {
+	@extend .ke-tag;
+
+	background-color: #EEF;
+	color: #223;
+}
+
+.ke-onlinetag {
+	@extend .ke-tag;
+
+	background-color: #daf0da;
+	color: #232;
+}
+
+.ke-deadtag {
+	@extend .ke-tag;
+
+	background-color: #FF5153;
+	color: #000;
+}
+
+.ke-voidedtag {
+	@extend .ke-tag;
+
+	background-color: #000;
+	color: #FFF
+}
+
+/************************** Modal dialogs **************************/
+
+.ke-modal-overlay {
+	position: fixed;
+	opacity: 0.5;
+	background: #000;
+	width: 100%;
+	height: 100%;
+	z-index: 2001;
+	top: 0;
+	left: 0;
+}
+
+.ke-modal-content {
+	position: fixed;
+	z-index: 2002;
+}
+
+/************************** Miscellaneous **************************/
+
+.ke-warning {
+	@extend .ke-rounded;
+
+	color: #4b362b;
+	padding: 5px;
+	background-color: $color_bkgd_warning;
+	font-weight: bold;
+	font-size: $size_text_general;
+}
+
+.ke-search {
+	width: 300px;
+	text-align: left;
+}
+
+.ke-loading {
+	background-image: url('../images/loader_small.gif');
+	background-repeat: no-repeat;
+	min-height: 16px;
+	min-width: 16px;
+}
+
+.ke-tip {
+	font-size: $size_text_extra;
+}
+
+/* Images that appear inline with regular text */
+.ke-glyph {
+	vertical-align: text-bottom;
+	height: 16px;
+	width: 16px;
+}
+
+.ke-identifier-type {
+	color: #777;
+}
+
+.ke-identifier-value {
+	font-weight: bold;
+}
+
+.ke-hidden {
+	display: none;
+}
+
+/************************** Fixes **************************/
+
+/* Datepicker uses size attribute which Chrome doesn't respect. This ensures inputs are wide enough */
+input.hasDatepicker {
+	width: 105px;
+}
+
+/* Make input fields look similar to select2 controls */
+input[type=text], input[type=password], input[type=file] {
+	border-radius: 3px;
+	padding: 4px;
+	margin: 0;
+	border: 1px solid #aaa;
+	font-size: $size_text_general;
+}
+
+/* Make input field highlighting same across different browsers */
+input[type=text]:focus, input[type=password]:focus, input[type=file]:focus {
+	background-color: $color_bkgd_highlight;
+	outline: none;
+}
+
+/* Don't bold a tags used by select2 */
+.select2-container {
+	a {
+		font-weight: normal;
+	}
+}
+
+/* Override styles for toasts */
+.toast-item {
+	background-color: #464640;
+	border-radius: 3px;
+	border: 0;
+}
+
+.ui-dialog-titlebar button {
+	min-width: 0;
+}
+
+/*********************** Deprecated *************************/
+
+/* Replaced by <button> styling */
+.ke-button {
+	@extend .ke-pressable;
+	@extend .ke-rounded;
+
+	padding: 5px;
+	position: relative;
+
+	.ke-icon {
+		float: left;
+		margin-right: 5px;
+	}
+	.ke-button-text {
+		float: left;
+		text-align: center;
+
+		.ke-label {
+			min-width: 75px;
+		}
+		.ke-extra {
+			font-size: 11px;
+			font-weight: normal;
+		}
+	}
+}
+
+.ke-form-footer {
+	.ke-button {
+		margin: 2px;
+	}
+}

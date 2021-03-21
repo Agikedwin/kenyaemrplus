@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ehrinventory/ehrinventory.iml" filepath="$PROJECT_DIR$/ehrinventory/ehrinventory.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ehrinventory/api/ehrinventory-api.iml" filepath="$PROJECT_DIR$/ehrinventory/api/ehrinventory-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ehrinventory/omod/ehrinventory-omod.iml" filepath="$PROJECT_DIR$/ehrinventory/omod/ehrinventory-omod.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/healthIT.iml" filepath="$PROJECT_DIR$/.idea/healthIT.iml" />
+    </modules>
+  </component>
+</project>

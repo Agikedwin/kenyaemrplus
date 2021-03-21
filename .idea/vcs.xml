@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/ehrLaboratoryapp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ehrcashier" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ehrconfigs" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ehrhospitalcoreopenmrs" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ehrinitialpatientqueueapp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ehrinventory" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ehrinventoryapp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ehrlaboratorycore" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ehrpharmacy" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ipdapp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/openmrs-module-kenyacore" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/openmrs-module-kenyaemr" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/openmrs-module-kenyaui" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/patientdashboardapp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/patientqueueapp" vcs="Git" />
+  </component>
+</project>
